@@ -9,6 +9,7 @@ export default StyleSheet.create({
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        height: 45,
         alignItems:'center',
         backgroundColor: Colors.DARK,
     },

@@ -26,18 +26,19 @@ const FilmScreen = () => {
     const film: Film = route.params.film;
     const [characters, setCharacters] = useState<Character[]>([])
 
-    const loadCharacters = () => {
+    function loadCharacters() {
         try {
+            const charactersArray: Character[] = [];
             film.characters.map(async characterUrl => {
                 const character = await getCharacter(characterUrl)
-                setCharacters(characters => [...characters, character])
+                setCharacters(characters => characters.concat(character))
             })
         } catch (err) {
             Alert.alert('Erro ao buscar personagens!')
         }
     }
 
-    const getCharacter = (url: string) => {
+    function getCharacter(url: string) {
         return axios.get(url).then(
             (response: { data: Character; }) => response.data
         )
@@ -67,6 +68,7 @@ const FilmScreen = () => {
                 <Text style={styles.filmProperty}>Characters:</Text>
                 <FlatList
                     data={characters}
+                    extraData={characters}
                     keyExtractor={(item, index) => String(index)}
                     showsVerticalScrollIndicator={false}
                     onEndReachedThreshold={0.2}

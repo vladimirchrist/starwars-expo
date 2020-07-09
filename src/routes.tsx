@@ -2,8 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Home from './pages/Home/Home';
-import FilmScreen from './pages/Film/Film';
+import Home from './pages/Home';
+import FilmScreen from './pages/Film';
 import { Film } from './models/film';
 
 export type AppStackParamList = {

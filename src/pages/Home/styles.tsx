@@ -26,14 +26,14 @@ export default StyleSheet.create({
   },
 
   filmList: {
-    marginTop: 32
+    marginTop: 10
   },
 
   film: {
-    padding: 24,
+    padding: 20,
     borderRadius: 8,
     backgroundColor: Colors.DARK,
-    marginBottom: 16
+    marginBottom: 15
   },
 
   filmProperty: {
@@ -45,7 +45,7 @@ export default StyleSheet.create({
   filmValue: {
     marginTop: 8,
     fontSize: 15,
-    marginBottom: 24,
+    marginBottom: 20,
     color: Colors.WHITE
   },
 

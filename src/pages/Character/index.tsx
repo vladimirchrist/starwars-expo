@@ -13,7 +13,7 @@ interface CharacterData {
 const CharacterScreen = (data: CharacterData) => {
 
     const [expanded, setExpanded] = useState(false);
-    const toggleExpand = () => {
+    function toggleExpand() {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setExpanded(!expanded)
     }

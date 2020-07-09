@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Film } from '../../models/film';
 import styles from './styles';
 import api from '../../services/api';
-import { FilmScreenNavigationProp } from '../Film/Film';
+import { FilmScreenNavigationProp } from '../Film';
 
 const Home = () => {
 
