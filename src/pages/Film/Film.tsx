@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Text, View, TouchableOpacity, FlatList, ScrollView } from 'react-native';
+import { Text, View, TouchableOpacity, FlatList, ScrollView, Alert } from 'react-native';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Feather } from '@expo/vector-icons';
@@ -27,11 +27,14 @@ const FilmScreen = () => {
     const [characters, setCharacters] = useState<Character[]>([])
 
     const loadCharacters = () => {
-
-        film.characters.map(async characterUrl => {
-            const character = await getCharacter(characterUrl)
-            setCharacters(characters => [...characters, character])
-        })
+        try {
+            film.characters.map(async characterUrl => {
+                const character = await getCharacter(characterUrl)
+                setCharacters(characters => [...characters, character])
+            })
+        } catch (err) {
+            Alert.alert('Erro ao buscar personagens!')
+        }
     }
 
     const getCharacter = (url: string) => {
@@ -62,21 +65,21 @@ const FilmScreen = () => {
                 <Text style={styles.filmValue}>{film.director}</Text>
 
                 <Text style={styles.filmProperty}>Characters:</Text>
-             <FlatList
-                data={characters}
-                keyExtractor={(item, index) => String(index)}
-                showsVerticalScrollIndicator={false}
-                onEndReachedThreshold={0.2}
-                renderItem={({ item: character }) => (
-                    <View style={styles.containerPer}>
-                        <CharacterScreen
-                            key={character.name}
-                            name={character.name}
-                            character={character}
-                        ></CharacterScreen>
-                    </View>
-                )}
-            />
+                <FlatList
+                    data={characters}
+                    keyExtractor={(item, index) => String(index)}
+                    showsVerticalScrollIndicator={false}
+                    onEndReachedThreshold={0.2}
+                    renderItem={({ item: character }) => (
+                        <View style={styles.containerPer}>
+                            <CharacterScreen
+                                key={character.name}
+                                name={character.name}
+                                character={character}
+                            ></CharacterScreen>
+                        </View>
+                    )}
+                />
             </View>
         </View>
     )

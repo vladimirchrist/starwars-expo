@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, TouchableOpacity, View, FlatList } from 'react-native';
+import { Text, TouchableOpacity, View, FlatList, Alert } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -31,7 +31,9 @@ const Home = () => {
     .then(response => {
       setFilms([...films, ...response.data.results]);
       setLoading(false);
-    });
+    }).catch(err => 
+      Alert.alert('Erro ao buscar filmes!')
+    );
   }
 
   useEffect(() => {
