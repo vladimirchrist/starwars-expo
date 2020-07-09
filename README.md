@@ -12,7 +12,7 @@
 
 Execute ```npm install```, para instalar as dependências.
 
-Rode ```npm start``` , acesse **localhost:19002**, leia o QR Code no seu celular e utilize o aplicativo <img src="imgs/expo.png" alt="rocketseat" height="20"> Expo para rodar a versão mobile no seu smartphone. Ou com algum emulador Android/iOS para rodar no seu computador.
+Rode ```npm start``` , acesse **localhost:19002**, leia o QR Code no seu celular e utilize o aplicativo <img src="imgs/expo.png" alt="expo" height="20"> Expo para rodar a versão mobile no seu smartphone. Ou com algum emulador Android/iOS para rodar no seu computador.
 
 ## Telas
 
