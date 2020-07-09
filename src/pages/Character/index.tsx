@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, LayoutAnimation } from 'react-native';
-
-import styles from './styles';
 import { Feather } from '@expo/vector-icons';
 
-import Character from '../models/character';
+import Character from '../../models/character';
+import styles from './styles';
 
-interface AccordionData {
-    title: string;
+interface CharacterData {
+    name: string;
     character: Character
 }
 
-const Accordion = (data: AccordionData) => {
+const CharacterScreen = (data: CharacterData) => {
 
     const [expanded, setExpanded] = useState(false);
     const toggleExpand = () => {
@@ -26,7 +25,7 @@ const Accordion = (data: AccordionData) => {
                 onPress={() => toggleExpand()}
             >
                 <Text style={styles.title}>
-                    {data.character.name}
+                    {data.name}
                 </Text>
                 <Feather name={expanded ? 'chevron-up' : 'chevron-down'}
                     size={28} color="#E02041" />
@@ -37,27 +36,27 @@ const Accordion = (data: AccordionData) => {
                 expanded &&
                 <View style={styles.child}>
                     <View style={styles.charAttributes}>
-                        <Text style={styles.propertie}>Ano de aniversário:</Text>
+                        <Text style={styles.propertie}>Birth Year:</Text>
                         <Text style={styles.value}>{data.character.birth_year}</Text>
                     </View>
                     <View style={styles.charAttributes}>
 
-                        <Text style={styles.propertie}>Genero:</Text>
+                        <Text style={styles.propertie}>Gender:</Text>
                         <Text style={styles.value}>{data.character.gender}</Text>
                     </View>
                     <View style={styles.charAttributes}>
 
-                        <Text style={styles.propertie}>Altura:</Text>
+                        <Text style={styles.propertie}>Height:</Text>
                         <Text style={styles.value}>{data.character.height}</Text>
                     </View>
                     <View style={styles.charAttributes}>
 
-                        <Text style={styles.propertie}>Cor do cabelo:</Text>
+                        <Text style={styles.propertie}>Hair Color:</Text>
                         <Text style={styles.value}>{data.character.hair_color}</Text>
                     </View>
                     <View style={styles.charAttributes}>
 
-                        <Text style={styles.propertie}>Cor da pele:</Text>
+                        <Text style={styles.propertie}>Skin Color:</Text>
                         <Text style={styles.value}>{data.character.skin_color}</Text>
                     </View>
                 </View>
@@ -67,4 +66,4 @@ const Accordion = (data: AccordionData) => {
     )
 }
 
-export default Accordion;
+export default CharacterScreen;

@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Text, View, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { Feather } from '@expo/vector-icons';
+import axios from 'axios';
 
 import { Film } from '../../models/film';
-import { AppStackParamList } from '../../routes';
-import { StackNavigationProp } from '@react-navigation/stack';
-
-import Accordion from '../../Accordion';
 import Character from '../../models/character';
-import styles from './styles';
+import CharacterScreen from '../Character';
 
-import axios from 'axios';
+import { AppStackParamList } from '../../routes';
+import styles from './styles';
 
 export type FilmScreenRouteProp = RouteProp<AppStackParamList, 'FilmScreen'>
 export type FilmScreenNavigationProp = StackNavigationProp<
@@ -28,6 +27,7 @@ const FilmScreen = () => {
     const [characters, setCharacters] = useState<Character[]>([])
 
     const loadCharacters = () => {
+
         film.characters.map(async characterUrl => {
             const character = await getCharacter(characterUrl)
             setCharacters(characters => [...characters, character])
@@ -55,13 +55,13 @@ const FilmScreen = () => {
             </View>
 
             <View style={styles.film}>
-                <Text style={[styles.filmProperty, { marginTop: 0 }]}>Título do filme:</Text>
+                <Text style={[styles.filmProperty, { marginTop: 0 }]}>Title:</Text>
                 <Text style={styles.filmValue}>{film.title}</Text>
 
-                <Text style={styles.filmProperty}>Diretor:</Text>
+                <Text style={styles.filmProperty}>Director:</Text>
                 <Text style={styles.filmValue}>{film.director}</Text>
 
-                <Text style={styles.filmProperty}>Personagens:</Text>
+                <Text style={styles.filmProperty}>Characters:</Text>
              <FlatList
                 data={characters}
                 keyExtractor={(item, index) => String(index)}
@@ -69,11 +69,11 @@ const FilmScreen = () => {
                 onEndReachedThreshold={0.2}
                 renderItem={({ item: character }) => (
                     <View style={styles.containerPer}>
-                        <Accordion
+                        <CharacterScreen
                             key={character.name}
-                            title={character.name}
+                            name={character.name}
                             character={character}
-                        ></Accordion>
+                        ></CharacterScreen>
                     </View>
                 )}
             />

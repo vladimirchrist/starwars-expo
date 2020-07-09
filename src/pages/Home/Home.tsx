@@ -55,13 +55,13 @@ const Home = () => {
         renderItem={({ item: film }) => (
           <View style={styles.film}>
 
-            <Text style={styles.filmProperty}>Titulo:</Text>
+            <Text style={styles.filmProperty}>Title:</Text>
             <Text style={styles.filmValue}>{film.title}</Text>
 
-            <Text style={styles.filmProperty}>Diretor:</Text>
+            <Text style={styles.filmProperty}>Director:</Text>
             <Text style={styles.filmValue}>{film.director}</Text>
 
-            <Text style={styles.filmProperty}>Lançamento:</Text>
+            <Text style={styles.filmProperty}>Realease Date:</Text>
             <Text style={styles.filmValue}>{film.release_date}</Text>
 
             <Text style={styles.filmProperty}>Opening:</Text>
@@ -71,7 +71,7 @@ const Home = () => {
               style={styles.detailsButton}
               onPress={() => navigateToDetail(film)}
             >
-              <Text style={styles.detailsButtonText}>Detalhes sobre o filme</Text>
+              <Text style={styles.detailsButtonText}>Movie Details</Text>
               <Feather name="arrow-right" size={16} color="#f7ec12" />
             </TouchableOpacity>
           </View>
